@@ -52,6 +52,7 @@
         "variant": "cpp",
         "charconv": "cpp",
         "ctime": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "bitset": "cpp"
     }
 }

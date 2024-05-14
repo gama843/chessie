@@ -12,6 +12,29 @@ void printHelp() {
               << "-e --eval   Returns evaluation of a player's position based on the provided ID - 0 = white, 1 = black.\n";
 }
 
+void setupCastlingTest(ChessEngine& engine) {
+    // Clear the board for custom setup
+    engine.whitePawns = 0;
+    engine.whiteKnights = 0;
+    engine.whiteBishops = 0;
+    engine.whiteRooks = (1ULL << 0) | (1ULL << 7); // Rooks at A1 and H1
+    engine.whiteQueens = 0;
+    engine.whiteKing = 1ULL << 4; // King at E1
+    engine.blackPawns = 0;
+    engine.blackKnights = 0;
+    engine.blackBishops = 0;
+    engine.blackRooks = (1ULL << 56) | (1ULL << 63); // Rooks at A8 and H8
+    engine.blackQueens = 0;
+    engine.blackKing = 1ULL << 60; // King at E8
+
+    engine.setWhiteKingMoved(false);
+    engine.setWhiteRookA1Moved(false);
+    engine.setWhiteRookH1Moved(false);
+    engine.setBlackKingMoved(false);
+    engine.setBlackRookA8Moved(false);
+    engine.setBlackRookH8Moved(false);
+}
+
 int main(int argc, char* argv[]) {
     ChessEngine engine;
 
@@ -40,112 +63,67 @@ int main(int argc, char* argv[]) {
         std::cout << "Usage: " << argv[0] << " [--new | --file <path> | --eval <player> | --help]" << std::endl;
     }
 
-    // Initialize new game
+    // Initialize new game and setup for castling test
     engine.newGame();
-    std::cout << "Initial board:" << std::endl;
+    setupCastlingTest(engine);
+    std::cout << "Board set up for castling test:" << std::endl;
     engine.printBoard();
 
-    // Move 1: White pawn from E2 to E4
-    Move move1(12, 28); // Pawn move from E2 to E4
-    if (engine.isValidMove(move1, 0)) {
-        std::cout << "Move 1 is valid!" << std::endl;
-        engine.makeMove(move1, 0);
-        std::cout << "Board after Move 1:" << std::endl;
+    // Test Kingside Castling for White
+    Move kingsideCastleWhite(4, 6);
+    if (engine.isValidMove(kingsideCastleWhite, 0)) {
+        std::cout << "Kingside Castling for White is valid!" << std::endl;
+        engine.makeMove(kingsideCastleWhite, 0);
+        std::cout << "Board after Kingside Castling for White:" << std::endl;
         engine.printBoard();
-        std::cout << "Evaluation for White after Move 1: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 1: " << engine.getCurrentValue(1) << std::endl;
     } else {
-        std::cout << "Move 1 is invalid!" << std::endl;
+        std::cout << "Kingside Castling for White is invalid!" << std::endl;
     }
 
-    // Move 2: Black knight from G8 to F6
-    Move move2(62, 45); // Knight move from G8 to F6
-    if (engine.isValidMove(move2, 1)) {
-        std::cout << "Move 2 is valid!" << std::endl;
-        engine.makeMove(move2, 1);
-        std::cout << "Board after Move 2:" << std::endl;
+    // Reset for next test
+    engine.newGame();
+    setupCastlingTest(engine);
+
+    // Test Queenside Castling for White
+    Move queensideCastleWhite(4, 2);
+    if (engine.isValidMove(queensideCastleWhite, 0)) {
+        std::cout << "Queenside Castling for White is valid!" << std::endl;
+        engine.makeMove(queensideCastleWhite, 0);
+        std::cout << "Board after Queenside Castling for White:" << std::endl;
         engine.printBoard();
-        std::cout << "Evaluation for White after Move 2: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 2: " << engine.getCurrentValue(1) << std::endl;
     } else {
-        std::cout << "Move 2 is invalid!" << std::endl;
+        std::cout << "Queenside Castling for White is invalid!" << std::endl;
     }
 
-    // Move 3: White pawn from D2 to D4
-    Move move3(11, 19); // Pawn move from D2 to D4
-    if (engine.isValidMove(move3, 0)) {
-        std::cout << "Move 3 is valid!" << std::endl;
-        engine.makeMove(move3, 0);
-        std::cout << "Board after Move 3:" << std::endl;
+    // Reset for next test
+    engine.newGame();
+    setupCastlingTest(engine);
+
+    // Test Kingside Castling for Black
+    Move kingsideCastleBlack(60, 62);
+    if (engine.isValidMove(kingsideCastleBlack, 1)) {
+        std::cout << "Kingside Castling for Black is valid!" << std::endl;
+        engine.makeMove(kingsideCastleBlack, 1);
+        std::cout << "Board after Kingside Castling for Black:" << std::endl;
         engine.printBoard();
-        std::cout << "Evaluation for White after Move 3: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 3: " << engine.getCurrentValue(1) << std::endl;
     } else {
-        std::cout << "Move 3 is invalid!" << std::endl;
+        std::cout << "Kingside Castling for Black is invalid!" << std::endl;
     }
 
-    // Move 4: Black pawn from E7 to E6
-    Move move4(52, 36); // Pawn move from E7 to E6
-    if (engine.isValidMove(move4, 1)) {
-        std::cout << "Move 4 is valid!" << std::endl;
-        engine.makeMove(move4, 1);
-        std::cout << "Board after Move 4:" << std::endl;
+    // Reset for next test
+    engine.newGame();
+    setupCastlingTest(engine);
+
+    // Test Queenside Castling for Black
+    Move queensideCastleBlack(60, 58);
+    if (engine.isValidMove(queensideCastleBlack, 1)) {
+        std::cout << "Queenside Castling for Black is valid!" << std::endl;
+        engine.makeMove(queensideCastleBlack, 1);
+        std::cout << "Board after Queenside Castling for Black:" << std::endl;
         engine.printBoard();
-        std::cout << "Evaluation for White after Move 4: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 4: " << engine.getCurrentValue(1) << std::endl;
     } else {
-        std::cout << "Move 4 is invalid!" << std::endl;
+        std::cout << "Queenside Castling for Black is invalid!" << std::endl;
     }
-
-    // Move 5: White pawn from E4 to E5
-    Move move5(28, 36); // Pawn move from E4 to E5
-    if (engine.isValidMove(move5, 0)) {
-        std::cout << "Move 5 is valid!" << std::endl;
-        engine.makeMove(move5, 0);
-        std::cout << "Board after Move 5:" << std::endl;
-        engine.printBoard();
-        std::cout << "Evaluation for White after Move 5: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 5: " << engine.getCurrentValue(1) << std::endl;
-    } else {
-        std::cout << "Move 5 is invalid!" << std::endl;
-    }
-
-    // Move 6: Black knight from F6 to D5
-    Move move6(45, 28); // Knight move from F6 to D5
-    if (engine.isValidMove(move6, 1)) {
-        std::cout << "Move 6 is valid!" << std::endl;
-        engine.makeMove(move6, 1);
-        std::cout << "Board after Move 6:" << std::endl;
-        engine.printBoard();
-        std::cout << "Evaluation for White after Move 6: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 6: " << engine.getCurrentValue(1) << std::endl;
-    } else {
-        std::cout << "Move 6 is invalid!" << std::endl;
-    }
-
-    // Move 7: White pawn from D4 to D5 (captures knight)
-    Move move7(19, 28); // Pawn move from D4 to D5 (capture)
-    if (engine.isValidMove(move7, 0)) {
-        std::cout << "Move 7 is valid!" << std::endl;
-        engine.makeMove(move7, 0);
-        std::cout << "Board after Move 7:" << std::endl;
-        engine.printBoard();
-        std::cout << "Evaluation for White after Move 7: " << engine.getCurrentValue(0) << std::endl;
-        std::cout << "Evaluation for Black after Move 7: " << engine.getCurrentValue(1) << std::endl;
-    } else {
-        std::cout << "Move 7 is invalid!" << std::endl;
-    }
-
-    // Save the game state to a file
-    std::string filePath = "game_state.txt";
-    engine.saveGameToFile(filePath);
-    std::cout << "Game state saved to " << filePath << std::endl;
-
-    // Load the game state from the file
-    ChessEngine loadedEngine;
-    loadedEngine.loadGameFromFile(filePath);
-    std::cout << "Loaded game state from " << filePath << std::endl;
-    loadedEngine.printBoard();
 
     return 0;
 }

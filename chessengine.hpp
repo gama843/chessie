@@ -23,17 +23,39 @@ public:
     void makeMove(const Move& move, int player);
     int getCurrentValue(int player);
     Move makeNaiveMove(int player);
-    void printBoard(); // Add this line
-    void printBitboard(uint64_t bitboard); // Add this line
+    void printBoard();
+    void printBitboard(uint64_t bitboard);
+
+    // Castling
+    bool canCastleKingside(int player);
+    bool canCastleQueenside(int player);
 
     // Make bitboards public for testing and debugging
     uint64_t whitePawns, whiteKnights, whiteBishops, whiteRooks, whiteQueens, whiteKing;
     uint64_t blackPawns, blackKnights, blackBishops, blackRooks, blackQueens, blackKing;
 
+    // Getter and Setter methods for castling flags
+    bool getWhiteKingMoved() const;
+    void setWhiteKingMoved(bool moved);
+    bool getWhiteRookA1Moved() const;
+    void setWhiteRookA1Moved(bool moved);
+    bool getWhiteRookH1Moved() const;
+    void setWhiteRookH1Moved(bool moved);
+    bool getBlackKingMoved() const;
+    void setBlackKingMoved(bool moved);
+    bool getBlackRookA8Moved() const;
+    void setBlackRookA8Moved(bool moved);
+    bool getBlackRookH8Moved() const;
+    void setBlackRookH8Moved(bool moved);
+
 private:
     bool isWithinBoard(int square);
     void removePiece(uint64_t& bitboard, int square);
     void placePiece(uint64_t& bitboard, int square);
+    
+    // Castling flags
+    bool whiteKingMoved, whiteRookA1Moved, whiteRookH1Moved;
+    bool blackKingMoved, blackRookA8Moved, blackRookH8Moved;
 };
 
 #endif // CHESSENGINE_HPP
