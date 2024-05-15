@@ -47,7 +47,7 @@ void ChessEngine::saveGameToFile(const std::string& path) {
 }
 
 std::string ChessEngine::getGameStatus() {
-    // Placeholder for checking the game status (e.g., checkmate, stalemate)
+    // placeholder for checking the game status (e.g., checkmate, stalemate)
     return "Game in progress";
 }
 
@@ -84,7 +84,7 @@ bool ChessEngine::isValidMove(const Move& move, int player) {
     } else if (queens & fromBit) {
         return MoveValidator::isValidQueenMove(move, player, queens, ownPieces, occupied);
     } else if (king & fromBit) {
-        // Handle castling
+        // handle castling
         if ((move.from == 4 && move.to == 6 && canCastleKingside(player)) ||
             (move.from == 4 && move.to == 2 && canCastleQueenside(player)) ||
             (move.from == 60 && move.to == 62 && canCastleKingside(player)) ||
@@ -102,36 +102,36 @@ void ChessEngine::makeMove(const Move& move, int player) {
     uint64_t fromBit = 1ULL << move.from;
     uint64_t toBit = 1ULL << move.to;
 
-    // Handle castling
+    // handle castling
     if ((move.from == 4 && move.to == 6 && canCastleKingside(0)) ||
         (move.from == 4 && move.to == 2 && canCastleQueenside(0)) ||
         (move.from == 60 && move.to == 62 && canCastleKingside(1)) ||
         (move.from == 60 && move.to == 58 && canCastleQueenside(1))) {
         if (player == 0) {
-            // White castling
+            // white castling
             if (move.to == 6) {
-                // Kingside castling
+                // kingside castling
                 removePiece(whiteKing, 4);
                 placePiece(whiteKing, 6);
                 removePiece(whiteRooks, 7);
                 placePiece(whiteRooks, 5);
             } else {
-                // Queenside castling
+                // queenside castling
                 removePiece(whiteKing, 4);
                 placePiece(whiteKing, 2);
                 removePiece(whiteRooks, 0);
                 placePiece(whiteRooks, 3);
             }
         } else {
-            // Black castling
+            // black castling
             if (move.to == 62) {
-                // Kingside castling
+                // kingside castling
                 removePiece(blackKing, 60);
                 placePiece(blackKing, 62);
                 removePiece(blackRooks, 63);
                 placePiece(blackRooks, 61);
             } else {
-                // Queenside castling
+                // queenside castling
                 removePiece(blackKing, 60);
                 placePiece(blackKing, 58);
                 removePiece(blackRooks, 56);
@@ -141,7 +141,7 @@ void ChessEngine::makeMove(const Move& move, int player) {
         return;
     }
 
-    // Remove any piece that is being captured
+    // remove any piece that is being captured
     removePiece(whitePawns, move.to);
     removePiece(whiteKnights, move.to);
     removePiece(whiteBishops, move.to);
@@ -211,7 +211,7 @@ void ChessEngine::makeMove(const Move& move, int player) {
             blackKing = king;
         }
 
-        // Update castling flags
+        // update castling flags
         if (player == 0) {
             whiteKingMoved = true;
         } else {
@@ -219,7 +219,7 @@ void ChessEngine::makeMove(const Move& move, int player) {
         }
     }
 
-    // Update rook moved flags
+    // update rook moved flags
     if (move.from == 0) whiteRookA1Moved = true;
     if (move.from == 7) whiteRookH1Moved = true;
     if (move.from == 56) blackRookA8Moved = true;
@@ -242,7 +242,7 @@ bool ChessEngine::canCastleKingside(int player) {
                                 (whiteQueens & 0x0000000000000040) || (whiteKing & 0x0000000000000040)) << "\n";
 
         return !whiteKingMoved && !whiteRookH1Moved &&
-               !(whitePawns & 0x0000000000000060) && // Ensure no pieces on F1 and G1
+               !(whitePawns & 0x0000000000000060) && // ensure no pieces on F1 and G1
                !(whiteKnights & 0x0000000000000060) &&
                !(whiteBishops & 0x0000000000000060) &&
                !(whiteRooks & 0x0000000000000060) &&
@@ -263,7 +263,7 @@ bool ChessEngine::canCastleKingside(int player) {
                                 (blackQueens & 0x4000000000000000) || (blackKing & 0x4000000000000000)) << "\n";
 
         return !blackKingMoved && !blackRookH8Moved &&
-               !(blackPawns & 0x6000000000000000) && // Ensure no pieces on F8 and G8
+               !(blackPawns & 0x6000000000000000) && // ensure no pieces on F8 and G8
                !(blackKnights & 0x6000000000000000) &&
                !(blackBishops & 0x6000000000000000) &&
                !(blackRooks & 0x6000000000000000) &&
@@ -291,7 +291,7 @@ bool ChessEngine::canCastleQueenside(int player) {
                                 (whiteQueens & 0x0000000000000008) || (whiteKing & 0x0000000000000008)) << "\n";
 
         return !whiteKingMoved && !whiteRookA1Moved &&
-               !(whitePawns & 0x000000000000000E) && // Ensure no pieces on B1, C1, D1
+               !(whitePawns & 0x000000000000000E) && // ensure no pieces on B1, C1, D1
                !(whiteKnights & 0x000000000000000E) &&
                !(whiteBishops & 0x000000000000000E) &&
                !(whiteRooks & 0x000000000000000E) &&
@@ -315,7 +315,7 @@ bool ChessEngine::canCastleQueenside(int player) {
                                 (blackQueens & 0x0800000000000000) || (blackKing & 0x0800000000000000)) << "\n";
 
         return !blackKingMoved && !blackRookA8Moved &&
-               !(blackPawns & 0x0E00000000000000) && // Ensure no pieces on B8, C8, D8
+               !(blackPawns & 0x0E00000000000000) && // ensure no pieces on B8, C8, D8
                !(blackKnights & 0x0E00000000000000) &&
                !(blackBishops & 0x0E00000000000000) &&
                !(blackRooks & 0x0E00000000000000) &&
@@ -354,12 +354,12 @@ int ChessEngine::getCurrentValue(int player) {
     blackScore += __builtin_popcountll(blackRooks) * rookValue;
     blackScore += __builtin_popcountll(blackQueens) * queenValue;
 
-    // Return the evaluation from the perspective of the player
+    // return the evaluation from the perspective of the player
     return (player == 0) ? (whiteScore - blackScore) : (blackScore - whiteScore);
 }
 
 Move ChessEngine::makeNaiveMove(int player) {
-    // Placeholder for making a naive move
+    // placeholder for making a naive move
     return Move(0, 0);
 }
 
@@ -376,8 +376,8 @@ void ChessEngine::printBitboard(uint64_t bitboard) {
 
 void ChessEngine::printBoard() {
     char pieceChars[2][6] = {
-        {'P', 'N', 'B', 'R', 'Q', 'K'}, // White pieces
-        {'p', 'n', 'b', 'r', 'q', 'k'}  // Black pieces
+        {'P', 'N', 'B', 'R', 'Q', 'K'}, // white pieces
+        {'p', 'n', 'b', 'r', 'q', 'k'}  // black pieces
     };
 
     uint64_t pieces[2][6] = {
@@ -412,7 +412,7 @@ bool ChessEngine::isWithinBoard(int square) {
     return square >= 0 && square < 64;
 }
 
-// Getter and Setter methods for castling flags
+// getter and setter methods for castling flags
 bool ChessEngine::getWhiteKingMoved() const { return whiteKingMoved; }
 void ChessEngine::setWhiteKingMoved(bool moved) { whiteKingMoved = moved; }
 bool ChessEngine::getWhiteRookA1Moved() const { return whiteRookA1Moved; }

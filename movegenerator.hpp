@@ -1,7 +1,7 @@
 #ifndef MOVE_GENERATOR_HPP
 #define MOVE_GENERATOR_HPP
 
-#include <cstdint> // For uint64_t
+#include <cstdint>
 
 class MoveGenerator {
 public:

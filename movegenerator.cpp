@@ -3,11 +3,11 @@
 uint64_t MoveGenerator::generatePawnMoves(uint64_t pawns, bool isWhite) {
     uint64_t singleStep, captures;
     if (isWhite) {
-        singleStep = (pawns << 8) & ~0xFF00000000000000; // One square forward, clear 8th rank
-        captures = ((pawns & ~0x8080808080808080) << 7) | ((pawns & ~0x0101010101010101) << 9); // Diagonal captures
+        singleStep = (pawns << 8) & ~0xFF00000000000000; // one square forward, clear 8th rank
+        captures = ((pawns & ~0x8080808080808080) << 7) | ((pawns & ~0x0101010101010101) << 9); // diagonal captures
     } else {
-        singleStep = (pawns >> 8) & ~0x00000000000000FF; // One square forward, clear 1st rank
-        captures = ((pawns & ~0x0101010101010101) >> 7) | ((pawns & ~0x8080808080808080) >> 9); // Diagonal captures
+        singleStep = (pawns >> 8) & ~0x00000000000000FF; // one square forward, clear 1st rank
+        captures = ((pawns & ~0x0101010101010101) >> 7) | ((pawns & ~0x8080808080808080) >> 9); // diagonal captures
     }
     return singleStep | captures;
 }
@@ -28,17 +28,17 @@ uint64_t MoveGenerator::generateKnightMoves(uint64_t knights) {
 }
 
 uint64_t MoveGenerator::generateBishopMoves(uint64_t bishops, uint64_t occupied) {
-    // Placeholder for generating bishop moves
+    // placeholder for generating bishop moves
     return 0;
 }
 
 uint64_t MoveGenerator::generateRookMoves(uint64_t rooks, uint64_t occupied) {
-    // Placeholder for generating rook moves
+    // placeholder for generating rook moves
     return 0;
 }
 
 uint64_t MoveGenerator::generateQueenMoves(uint64_t queens, uint64_t occupied) {
-    // Queen moves are a combination of bishop and rook moves
+    // queen moves are a combination of bishop and rook moves
     return generateBishopMoves(queens, occupied) | generateRookMoves(queens, occupied);
 }
 

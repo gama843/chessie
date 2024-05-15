@@ -1,7 +1,7 @@
 #ifndef CHESSENGINE_HPP
 #define CHESSENGINE_HPP
 
-#include <cstdint> // For uint64_t
+#include <cstdint>
 #include <string>
 #include <vector>
 #include "movegenerator.hpp"
@@ -26,15 +26,15 @@ public:
     void printBoard();
     void printBitboard(uint64_t bitboard);
 
-    // Castling
+    // castling
     bool canCastleKingside(int player);
     bool canCastleQueenside(int player);
 
-    // Make bitboards public for testing and debugging
+    // make bitboards public for testing and debugging
     uint64_t whitePawns, whiteKnights, whiteBishops, whiteRooks, whiteQueens, whiteKing;
     uint64_t blackPawns, blackKnights, blackBishops, blackRooks, blackQueens, blackKing;
 
-    // Getter and Setter methods for castling flags
+    // getter and setter methods for castling flags
     bool getWhiteKingMoved() const;
     void setWhiteKingMoved(bool moved);
     bool getWhiteRookA1Moved() const;
@@ -53,7 +53,7 @@ private:
     void removePiece(uint64_t& bitboard, int square);
     void placePiece(uint64_t& bitboard, int square);
     
-    // Castling flags
+    // castling flags
     bool whiteKingMoved, whiteRookA1Moved, whiteRookH1Moved;
     bool blackKingMoved, blackRookA8Moved, blackRookH8Moved;
 };

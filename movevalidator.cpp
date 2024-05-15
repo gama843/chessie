@@ -4,20 +4,20 @@ bool MoveValidator::isValidPawnMove(const Move& move, int player, uint64_t pawns
     uint64_t fromBit = 1ULL << move.from;
     uint64_t toBit = 1ULL << move.to;
 
-    // Define the direction based on the player
+    // define the direction based on the player
     int direction = player == 0 ? 1 : -1;
 
-    // Single step forward
+    // single step forward
     if (move.to == move.from + 8 * direction && !(toBit & opponentPieces) && !(toBit & pawns)) {
         return true;
     }
 
-    // Double step forward from the starting position
+    // double step forward from the starting position
     if (move.to == move.from + 16 * direction && move.from / 8 == (player == 0 ? 1 : 6) && !(toBit & opponentPieces) && !(toBit & pawns)) {
         return true;
     }
 
-    // Capture move
+    // capture move
     if ((move.to == move.from + 7 * direction || move.to == move.from + 9 * direction) && (toBit & opponentPieces)) {
         return true;
     }

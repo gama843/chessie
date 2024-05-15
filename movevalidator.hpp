@@ -1,7 +1,7 @@
 #ifndef MOVEVALIDATOR_HPP
 #define MOVEVALIDATOR_HPP
 
-#include <cstdint> // For uint64_t
+#include <cstdint>
 #include "chessengine.hpp"
 
 class MoveValidator {
