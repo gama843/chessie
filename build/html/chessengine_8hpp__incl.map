@@ -1,0 +1,17 @@
+<map id="/home/danielkuchta/kuchtad/project/src/chessengine.hpp" name="/home/danielkuchta/kuchtad/project/src/chessengine.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="198,5,349,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,108,72,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,63,84,106,82,101,201,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,108,155,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,62,158,103,156,99,227,58"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="346,181,409,207"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="244,62,229,78,218,97,214,115,220,132,242,155,271,171,303,181,333,187,332,192,301,186,269,176,239,159,215,135,209,115,213,95,225,75,240,58"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="230,108,317,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="276,60,276,94,271,94,271,60"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="341,108,465,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="314,58,375,98,372,103,311,62"/>
+<area shape="rect" id="Node000007" href="$movegenerator_8hpp.html" title=" " alt="" coords="489,108,639,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="350,56,506,102,505,107,348,61"/>
+<area shape="poly" id="edge8_Node000007_Node000001" title=" " alt="" coords="531,110,361,60,363,55,532,105"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="535,136,421,179,420,174,533,131"/>
+</map>

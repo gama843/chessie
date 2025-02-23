@@ -1,0 +1,21 @@
+<map id="/home/danielkuchta/kuchtad/project/src/utils.hpp" name="/home/danielkuchta/kuchtad/project/src/utils.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="50,5,201,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,181,72,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,61,54,171,49,168,109,59"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,181,155,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,60,128,168,123,168,123,60"/>
+<area shape="rect" id="Node000004" href="$chessengine_8hpp.html" title=" " alt="" coords="224,108,355,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,58,257,99,254,104,174,62"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="250,136,86,182,84,177,248,131"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="264,136,166,178,163,173,262,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="477,255,539,280"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="327,131,377,151,428,179,464,210,493,242,489,245,461,214,425,184,375,155,325,136"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="179,181,266,207"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="280,135,245,173,241,169,276,132"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="290,181,414,207"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="302,132,335,169,331,173,298,135"/>
+<area shape="rect" id="Node000008" href="$movegenerator_8hpp.html" title=" " alt="" coords="489,181,639,207"/>
+<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="327,131,500,175,499,181,326,136"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="526,184,353,139,354,134,527,179"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="557,209,528,245,523,242,553,205"/>
+</map>
